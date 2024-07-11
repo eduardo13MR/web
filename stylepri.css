@@ -1,0 +1,729 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    transition: background-position 1s ease-in-out;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(56, 56, 56, 0.24); /* Ajusta la opacidad y el color aquí */
+    z-index: -1;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: rgba(85, 85, 85, 0.733); /* Cambiado a negro para mejor contraste */
+    
+}
+
+
+/* Estilo para los títulos */
+h1 {
+    font-family: "break-word";
+    margin: 220px; /* Margen superior de 190px, sin márgenes en los otros lados */
+    padding: 0;
+    color: #ffffff;
+    text-align: center;
+    font-size: 3.8rem; /* Agranda el texto */
+    
+}
+
+p {
+    font-family: "Homer Simpson UI";
+  
+    
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.8rem; /* Agranda el texto */
+    margin-top: -210px; /* Ajusta el margen superior para acercar el p a otros elementos */
+}
+
+
+
+
+@media (max-width: 600px) {
+    h1 {
+        margin: 50px 10px; /* Reduce el margen en pantallas pequeñas, con un margen más pequeño a los lados */
+        font-size: 2.9rem; /* Ajusta el tamaño de la fuente en pantallas pequeñas */
+        
+    }
+}
+
+@media (max-width: 500px) {
+    p{
+        margin: 50px 10px; /* Reduce el margen en pantallas pequeñas, con un margen más pequeño a los lados */
+        font-size: 1.4rem; /* Ajusta el tamaño de la fuente en pantallas pequeñas */
+        margin-top: -50px; /* Ajusta el margen superior para acercar el p a otros elementos */
+    }
+}
+
+
+/* Estilos para el encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #00000065;
+    color: #e4e2de98;
+    background-attachment: fixed;
+}
+
+header .menu-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* Oculto por defecto en pantallas grandes */
+}
+
+
+/* Estilos para el menú de escritorio parte de arriva */
+.menu-desktop ul {
+    display: flex; /* Utiliza flexbox para alinear los elementos horizontalmente */
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+.menu-desktop ul li {
+    margin-right: -5px; /* Espacio entre los elementos de la lista */
+    flex:0.1px; /* Permite que los elementos crezcan, se encojan y se ajusten automáticamente */
+
+}
+
+.menu-desktop ul li a {
+    background: #00000000;
+    color: #ffe600;
+    border: none;
+    position: relative;
+    height: 57px; /*altura de las letras adentro de las lineas*/
+    font-size: 1.3em;/*Tamaño de la letra*/
+    padding: 0 1.8em; /*separacion entre botones*/
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    text-decoration: none; /* Para quitar el subrayado del enlace */
+    display: inline-block; /* Para hacer que el enlace se comporte como un botón */
+    line-height: 60px; /* Centrar el texto verticalmente */
+}
+
+.menu-desktop ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.123);
+    color: #ffd900; /*letra al pasar el cursor*/
+    font-family: inherit;
+    margin-bottom: 0px; /*MOvimiento de los botones*/
+}
+
+.menu-desktop ul li a:before, .menu-desktop ul li a:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px; /*Grosor de las lineas */
+    width: 0;
+    background: #ffc400; /*Color de las lineas*/
+    transition: 400ms ease all;
+}
+
+.menu-desktop ul li a:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.menu-desktop ul li a:hover:before, .menu-desktop ul li a:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+/**************************************************/
+/* Estilos para el menú móvil */
+.menu-mobile {
+    position: fixed;
+    color: #ff0000;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #000000de;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0);
+    transition: right 0.3s ease;
+    z-index: 999;
+    display: none;
+    flex-direction: column;
+    padding-top: 80px; /* Añade espacio en la parte superior para el encabezado */
+}
+
+.menu-mobile.menu-open {
+    right: 0;
+    display: flex;
+}
+
+.menu-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@media (min-width: 769px) {
+    .menu-mobile {
+        display: none;
+    }
+}
+
+/* Botón de cierre del menú */
+.close-btn {
+    position: absolute;
+    top: 21px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #ffffff; /* Cambia el color según tus preferencias */
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(180deg);
+    color: #ffffff; /* Cambia a rojo al pasar el ratón */
+}
+
+/* Estilos para los enlaces del menú móvil */
+.menu-mobile ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-mobile li {
+    padding: 15px;
+    border-top: 1px solid #da0707;
+}
+
+.menu-mobile li:first-child {
+    border-top: none;
+}
+
+.menu-mobile a {
+    text-decoration: none;
+    color: #ffe600;
+    font-size: 18px;
+    transition: color 0.1s ease;
+}
+
+.menu-mobile a:hover {
+    color: #ffffff;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    header .menu-btn {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        color: #ffffff;
+        transition: transform 0.3s ease, color 0.3s ease;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    .close-btn:hover {
+        transform: rotate(90deg);
+        color: #ffe600; /* Cambia a rojo al pasar el ratón */
+    }
+    .menu-desktop {
+        display: none;
+    }
+
+    .menu-mobile {
+        display: flex;
+    }
+
+    .menu-mobile ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .menu-mobile li {
+        padding: 10px;
+        border-top: 1px solid #fbff00;
+    }
+}
+
+/* Estilo para el contenido principal */
+.scrollable-content {
+    padding-bottom: 50px;
+    box-sizing: border-box;
+}
+
+/* Variables CSS para una fácil personalización */
+:root {
+    --footer-height: 60px;
+    --footer-bg-color: #ffffff;
+    --footer-text-color: #000000;
+    --footer-padding: -2px;
+    --footer-font-family: 'Arial', sans-serif;
+    --footer-font-size: 14px;
+    --footer-link-color: #dddddd;
+    --footer-link-hover-color: #ffffff;
+}
+
+/* Estilo para el footer derechos reservafros */
+footer.Derechos {
+    height: var(--footer-height);
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    text-align: center;
+    line-height: 1.5;
+   
+    bottom: 0;
+    width: 100%;
+    padding: var(--footer-padding) 0;
+    box-shadow: 0 -2px 5
+}
+
+.h7{
+    color: #000000;
+    text-align: center;
+
+}
+/* Estilos para la primera sección */
+.scrollable-content1:nth-of-type(1) {
+    padding: 20px;
+   
+    margin-top: 955px; /* Ajusta para subir o bajar */
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.scrollable-content1:nth-of-type(1) h2 {
+    font-variant: small-caps;
+    font-size: 320%;
+    line-height: 65%;
+    font-family: serif;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.scrollable-content1:nth-of-type(1) img {
+    transition: transform 0.3s ease; /* Añade transición para una animación suave */
+}
+
+.scrollable-content1:nth-of-type(1):hover img {
+    transform: scale(1.1);
+}
+
+
+/* Estilos para la segunda sección */
+.scrollable-content:nth-of-type(2) {
+    padding: 20px;
+    background-color: #ffffff;
+    margin-top: 10px; /* Ajusta para subir o bajar */
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.scrollable-content:nth-of-type(1) img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+/* Estilos para la segunda sección */
+.scrollable-content1:nth-of-type(2) {
+    padding: 20px;
+    background-color: #ffffff;
+    margin-top: 1px; /* Ajusta para subir o bajar */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.scrollable-content1:nth-of-type(2) h2 {
+    font:small-caps 320%/65% serif;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+
+/* Estilos para la tercerr sección */
+.scrollable-content2 {
+    position: relative;
+    padding: 80px;
+    background-color: #ffffff;
+    margin-top: 30px; /* Ajusta para subir o bajar */
+    margin-bottom: 10px;
+    text-align: center;
+    background-image: url('img/fondo construcion.jpg');
+    background-size: 1350px 800px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed; /* Imagen de fondo fija */
+
+}
+
+.scrollable-content2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 142, 184, 0.342); /* Ajusta la opacidad y el color aquí */
+    z-index: 0;
+}
+
+.scrollable-content2 h3 {
+    position: relative;
+    z-index: 1;
+    font: small-caps 280%/89% serif;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.scrollable-content2 *:not(h3) {
+    position: none;
+    z-index: 1;
+}
+
+/* Estilos para la cuarta sección de las imagenes*/
+.scrollable-content {
+    padding: 20px;
+    background-color: #ffffff00;
+    margin-top: 11px; /* Ajusta para subir o bajar */
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+
+/* Estilos para la galería de imágenes */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 160px;
+}
+
+.image-gallery img {
+    width: 200px;
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+    transition: transform 0.3s ease;
+
+}
+
+.galeria,
+.image-gallery {
+    width: 90%;
+    margin: auto;
+    list-style: none;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 100px; /* Ajusta este valor para mover la galería hacia arriba o hacia abajo */
+}
+
+.galeria img,
+.image-gallery img {
+    width: auto;
+    height: 150px; /* Ajusta la altura según tus necesidades */
+    border: 1px solid #ccc;
+    padding: 50px; /*contorno mas grande o mas pequeño*/
+    transition: transform 0.3s ease;
+    object-fit: cover; /* Para asegurarse de que las imágenes se ajusten correctamente */
+}
+
+.galeria img:hover,
+.image-gallery img:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo para las descripciones en la galería */
+.galeria li p {
+    font-size: 17px;      /* Tamaño de la fuente */
+    color: #000000;          /* Color del texto */
+    text-align: center;   /* Alineación del texto */
+    margin-top: 5px;      /* Espacio superior */
+}
+
+/* Estilo para las descripciones dentro de los modales */
+.modal .imagen + p {
+    font-size: 20px;      /* Tamaño de la fuente */
+    color: #ffffff;          /* Color del texto */
+    text-align: center;   /* Alineación del texto */
+    margin-top: 10px;     /* Espacio superior */
+    margin-bottom: 20px;  /* Espacio inferior */
+}
+
+
+/* Estilos del Modal */
+.modal {
+    display: none;
+}
+
+.modal:target {
+    display: block;
+    position: fixed;
+    background: rgb(252, 250, 250);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal h3 {
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.imagen {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen a {
+    color: #fff;
+    font-size: 40px;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.imagen img {
+    width: 500px;
+    height: auto;
+    max-width: 100%;
+    border: 7px solid #fff;
+    box-sizing: border-box;
+}
+
+.cerrar {
+    display: block;
+    background: #fff;
+    width: 25px;
+    height: 25px;
+    margin: 15px auto;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    color: #000;
+    padding: 5px;
+    border-radius: 50%;
+    line-height: 25px;
+}
+
+/*Esatioo para el boton VER MÄS PROYECTOS*/
+
+.btn11 {
+    top: 10px;
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 600; /* Grosor de la letra */
+    font-size: 18px; /* Ajustar tamaño de la fuente según sea necesario */
+    letter-spacing: 3px; /* Ajustar el espaciado entre letras según sea necesario */
+    color: #000000;
+    cursor: pointer; /* Cambiado de 'hand' a 'pointer' */
+    text-align: center;
+    text-transform: capitalize; /* Ajustar transformación del texto según sea necesario */
+    border: 3px solid #000000;
+    border-radius: 90px; /* Ajustar el radio de borde según sea necesario */
+    position: relative;
+    overflow: hidden; /* Asegurar que el contenido extra se oculta */
+    background: transparent;
+    z-index: 20;
+    width: auto; /* Cambiado de 20px a auto para ajustar al contenido */
+    height: auto; /* Ajustar la altura según sea necesario */
+    padding: 20px 10px; /* Ajustar el relleno según sea necesario */
+    
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Estilos al pasar el cursor */
+.btn11:hover {
+    border: 3px solid #000000;
+    color: #000000 !important;
+}
+
+/* Estilos del pseudo-elemento 'before' */
+.btn11::before {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 19%; /* Ajustar para evitar el punto negro */
+    opacity: 1;
+    z-index: -1;
+    border-radius: 90px; /* Ajustar el radio de borde según sea necesario */
+    box-shadow: 2px 0px 14px rgba(0, 0, 0, 0.6);
+    
+    -ms-transform: skewX(-20deg);
+    -webkit-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+    
+    -moz-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+    -o-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+    -webkit-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+
+}
+
+/* Estilos del pseudo-elemento 'after' */
+.btn11::after {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #000000e0;
+    position: absolute;
+    top: 0;
+    left: -0; /* Alineado al borde izquierdo del botón */
+    opacity: 0;
+    z-index: -15;
+    border-radius: 50px; /* Asegurar que el borde redondeado se aplique a los pseudo-elementos */
+    box-shadow: 2px 0px 14px rgb(0, 0, 0);
+    
+    -ms-transform: skewX(-20deg);
+    -webkit-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+    
+    -webkit-transition: all 0.94s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+    -moz-transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+    -o-transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+    transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+}
+
+/* Efectos al pasar el cursor sobre los pseudo-elementos */
+.btn11:hover::before,
+.btn11:hover::after {
+    opacity: 1;
+    width: 80%; /* Ajustar el ancho al pasar el cursor según sea necesario */
+}
+
+
+
+/************************************************/
+/*seccion para contactos*/
+.contactos {
+    position: relative;
+    padding: 80px;
+    background-color: #ffffff;
+    margin-top: 60px; /* Ajusta para subir o bajar */
+    margin-bottom: 10px;
+    text-align: center;
+    background-image: url('img/edificios.jpg');
+    background-size: cover; /* Mejor ajuste para que cubra todo el contenedor */
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed; /* Imagen de fondo fija */
+    color: #ffffff; /* Color del texto para asegurar visibilidad */
+}
+
+.contactos::before {
+    content: "";
+    position: fixed; /* Fija el overlay */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+ 
+    z-index: -1; /* Detrás del contenido */
+}
+
+.contactos h3 {
+    position: relative;
+    z-index: 1;
+    font: small-caps 250%/63% serif;
+    color: #ffffff; /* Asegura que el texto sea visible */
+    margin-bottom: 15px;
+}
+
+.contactos *:not(h3) {
+    position: relative;
+    z-index: 1;
+}
+
+/*Estilo para el boton de contactos*/
+.boton {
+    background: #444444be;
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 60px;
+    font-size: 1.6em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    text-decoration: none; /* To remove the underline from the link */
+    display: inline-block; /* To make the link behave like a button */
+    line-height: 60px; /* Center the text vertically */
+    
+}
+.boton:hover, h2 {
+    background-color: rgba(255, 255, 255, 0);
+    color: #000000;
+    font-family: inherit;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+.boton:before, .boton:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #ffee00;
+    transition: 400ms ease all;
+}
+.boton:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+.boton:hover:before, .boton:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
