@@ -1,0 +1,319 @@
+/* Estilos generales para la página */
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #ffffff;
+    background-image: url('img/fondo\ construcion.jpg');
+    background-size: 1350px 370px;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+body.move-down {
+    background-position: center 60px;
+}
+
+body.move-up {
+    background-position: center -190px;
+}
+
+/* Estilo para los encabezados */
+h1{
+    font-family: inherit;
+    margin: 210px;
+    padding: 0;
+    color: #ffffff;
+    text-align: center;
+    font-size: 2.9rem; /* Agranda el texto */
+}
+
+@media (max-width: 600px) {
+    h1 {
+        margin: 50px 10px; /* Reduce el margen en pantallas pequeñas, con un margen más pequeño a los lados */
+        font-size: 2.9rem; /* Ajusta el tamaño de la fuente en pantallas pequeñas */
+    }
+}
+
+/* Estilos para el encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #00000065;
+    color: #e4e2de98;
+    background-attachment: fixed;
+}
+
+header .menu-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* Oculto por defecto en pantallas grandes */
+}
+
+
+/* Estilos para el menú de escritorio parte de arriva */
+.menu-desktop ul {
+    display: flex; /* Utiliza flexbox para alinear los elementos horizontalmente */
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+.menu-desktop ul li {
+    margin-right: -5px; /* Espacio entre los elementos de la lista */
+    flex:0.1px; /* Permite que los elementos crezcan, se encojan y se ajusten automáticamente */
+
+}
+
+.menu-desktop ul li a {
+    background: #00000000;
+    color: #ffe600;
+    border: none;
+    position: relative;
+    height: 57px; /*altura de las letras adentro de las lineas*/
+    font-size: 1.3em;/*Tamaño de la letra*/
+    padding: 0 1.8em; /*separacion entre botones*/
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    text-decoration: none; /* Para quitar el subrayado del enlace */
+    display: inline-block; /* Para hacer que el enlace se comporte como un botón */
+    line-height: 60px; /* Centrar el texto verticalmente */
+}
+
+.menu-desktop ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.123);
+    color: #ffd900; /*letra al pasar el cursor*/
+    font-family: inherit;
+    margin-bottom: 0px; /*MOvimiento de los botones*/
+}
+
+.menu-desktop ul li a:before, .menu-desktop ul li a:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px; /*Grosor de las lineas */
+    width: 0;
+    background: #ffc400; /*Color de las lineas*/
+    transition: 400ms ease all;
+}
+
+.menu-desktop ul li a:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.menu-desktop ul li a:hover:before, .menu-desktop ul li a:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+
+/**************************************************/
+/* Estilos para el menú móvil */
+.menu-mobile {
+    position: fixed;
+    color: #ff0000;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #000000de;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0);
+    transition: right 0.3s ease;
+    z-index: 999;
+    display: none;
+    flex-direction: column;
+    padding-top: 80px; /* Añade espacio en la parte superior para el encabezado */
+}
+
+.menu-mobile.menu-open {
+    right: 0;
+    display: flex;
+}
+
+.menu-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@media (min-width: 769px) {
+    .menu-mobile {
+        display: none;
+    }
+}
+
+/* Botón de cierre del menú */
+.close-btn {
+    position: absolute;
+    top: 21px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #ffffff; /* Cambia el color según tus preferencias */
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(180deg);
+    color: #ffffff; /* Cambia a rojo al pasar el ratón */
+}
+
+/* Estilos para los enlaces del menú móvil */
+.menu-mobile ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-mobile li {
+    padding: 15px;
+    border-top: 1px solid #da0707;
+}
+
+.menu-mobile li:first-child {
+    border-top: none;
+}
+
+.menu-mobile a {
+    text-decoration: none;
+    color: #ffe600;
+    font-size: 18px;
+    transition: color 0.1s ease;
+}
+
+.menu-mobile a:hover {
+    color: #ffffff;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    header .menu-btn {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        color: #ffffff;
+        transition: transform 0.3s ease, color 0.3s ease;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    .close-btn:hover {
+        transform: rotate(90deg);
+        color: #ffe600; /* Cambia a rojo al pasar el ratón */
+    }
+    .menu-desktop {
+        display: none;
+    }
+
+    .menu-mobile {
+        display: flex;
+    }
+
+    .menu-mobile ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .menu-mobile li {
+        padding: 10px;
+        border-top: 1px solid #fbff00;
+    }
+}
+
+
+/* Estilo para el contenido principal */
+.scrollable-content {
+    padding-bottom: 50px;
+    box-sizing: border-box;
+}
+
+/* Variables CSS para una fácil personalización */
+:root {
+    --footer-height: 60px;
+    --footer-bg-color: #ffffff;
+    --footer-text-color: #000000;
+    --footer-padding: -2px;
+    --footer-font-family: 'Arial', sans-serif;
+    --footer-font-size: 14px;
+    --footer-link-color: #dddddd;
+    --footer-link-hover-color: #ffffff;
+}
+
+/* Estilo para el footer */
+footer.Derechos {
+    height: var(--footer-height);
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    text-align: center;
+    line-height: 1.5;
+   
+    bottom: 0;
+    width: 100%;
+    padding: var(--footer-padding) 0;
+    box-shadow: 0 -2px 5
+}
+/* Estilos para la primera sección */
+.scrollable-content1:nth-of-type(1) {
+    padding: -100px;
+    background-color: #ffffff;
+    margin-top: 20px; /* Ajusta para subir o bajar */
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.scrollable-content1:nth-of-type(1) h2 {
+    font:small-caps 240%/79% serif;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+
+/* Estilos para la galería de imágenes */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.image-gallery img {
+    width: 400px; /* Ancho de la imagen */
+    height: auto; /* Altura ajustada automáticamente */
+    border: 1px solid #ccc; /* Borde de 1px sólido de color gris claro */
+    padding: 5px; /* Espacio interno de 5px alrededor de la imagen */
+    transition: transform 0.3s ease; /* Transición suave de 0.3 segundos en la propiedad transform */
+}
+
+
+/* Estilo para las descripciones */
+.image-gallery figcaption {
+    margin-top: 8px;
+    font-size: 25px;
+    color: #c00000;
+    text-align: left;
+}
+
+ /* Estilos para el texto debajo de la imagen */
+ h5 {
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: lighter;
+    margin: 10px 0;
+    color: #000000;
+  }
+
